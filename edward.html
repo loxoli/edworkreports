@@ -1,90 +1,108 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <title>Reports</title>
-  <style>
-    @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-    body {
-      /* 先套用 Noto Sans TC 這個 思源黑體 */
-      font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
-    }
-
-    .flex-wrapper {
-      display: flex;
-      flex-flow: row nowrap;
-    }
-
-    .single-chart {
-      /* width: 33%; */
-      justify-content: space-around;
-    }
-
-    .circular-chart {
-      display: block;
-      margin: 10px auto;
-      max-width: 80%;
-      max-height: 250px;
-    }
-
-    .circle-bg {
-      fill: none;
-      stroke: #eee;
-      stroke-width: 3.8;
-    }
-
-    .circle {
-      fill: none;
-      stroke-width: 2.8;
-      stroke-linecap: round;
-      animation: progress 1s ease-out forwards;
-    }
-
-    @keyframes progress {
-      0% {
-        stroke-dasharray: 0 100;
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <title>Reports</title>
+    <style>
+      @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+      body {
+        /* 先套用 Noto Sans TC 這個 思源黑體 */
+        font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
       }
-    }
 
-    .circular-chart.orange .circle {
-      stroke: #ff9f00;
-    }
+      .flex-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+      }
 
-    .circular-chart.green .circle {
-      stroke: #4CC790;
-    }
+      .single-chart {
+        /* width: 33%; */
+        justify-content: space-around;
+      }
 
-    .circular-chart.blue .circle {
-      stroke: #3c9ee5;
-    }
+      .circular-chart {
+        display: block;
+        margin: 10px auto;
+        max-width: 80%;
+        max-height: 250px;
+      }
 
-    .percentage {
-      fill: #666;
-      font-family: sans-serif;
-      font-size: 0.5em;
-      text-anchor: middle;
-    }
-  </style>
+      .circle-bg {
+        fill: none;
+        stroke: #eee;
+        stroke-width: 3.8;
+      }
 
-</head>
+      .circle {
+        fill: none;
+        stroke-width: 2.8;
+        stroke-linecap: round;
+        animation: progress 1s ease-out forwards;
+      }
 
-<body>
-  <div id="kome">
+      @keyframes progress {
+        0% {
+          stroke-dasharray: 0 100;
+        }
+      }
 
-  </div>
-  <div class="container">
-    <div class="row" id="main">
-      <!-- <div class="col-md-3">
+      .circular-chart.orange .circle {
+        stroke: #ff9f00;
+      }
+
+      .circular-chart.green .circle {
+        stroke: #4cc790;
+      }
+
+      .circular-chart.blue .circle {
+        stroke: #3c9ee5;
+      }
+
+      .percentage {
+        fill: #666;
+        font-family: sans-serif;
+        font-size: 0.5em;
+        text-anchor: middle;
+      }
+
+      a {
+        color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="kome"></div>
+    <div class="container">
+      <div class="row" id="main">
+        <div class="col-md-12">
+          <h1 class="mt-4">
+            Report
+          </h1>
+        </div>
+
+        <!-- <div class="col-md-3">
         <div class="text-center mt-5 mb-4">
-          <h2>某某某事件</h2>
+          <a href="https://google.com" target="_blank">
+            <h2>某某某事件</h2>
+          </a>
         </div>
         <div class="single-chart">
           <svg viewBox="0 0 36 36" class="circular-chart orange">
@@ -97,80 +115,98 @@
             <text x="18" y="20.35" class="percentage">30%</text>
           </svg>
         </div>
+      </div> -->
+      
       </div>
-       -->
     </div>
-
-  </div>
-  <script>
-
-    $.getJSON('https://api.npoint.io/7304ecf0876fdf419c7c', function (data) {
-      var html = '',
-        el = document.getElementById("main");
-      $.each(data, function (key, val) {
-
-
-        if (val.value < 40) {
-          html += `<div class="col-md-3">
+    <script>
+      $.getJSON("https://api.npoint.io/7304ecf0876fdf419c7c", function(data) {
+        var html = "",
+          el = document.getElementById("main");
+        $.each(data, function(key, val) {
+          if (val.value < 40) {
+            html +=
+              `<div class="col-md-3">
             <div class="text-center mt-5 mb-4">
-              <h2>` + val.title + `</h2>
+              <a href="` + val.url + `" target="_blank">
+                <h2>` +
+                val.title +
+                `</h2>
+              </a>
             </div>
             <div class="single-chart">
               <svg viewBox="0 0 36 36" class="circular-chart orange">
                 <path class="circle-bg" d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="circle" stroke-dasharray="` + val.value + `, 100" d="M18 2.0845
+                <path class="circle" stroke-dasharray="` +
+              val.value +
+              `, 100" d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <text x="18" y="20.35" class="percentage">` + val.value + `%</text>
+                <text x="18" y="20.35" class="percentage">` +
+              val.value +
+              `%</text>
               </svg>
             </div>
             </div>`;
-        } else if (val.value < 70) {
-          html += `<div class="col-md-3">
+          } else if (val.value < 70) {
+            html +=
+              `<div class="col-md-3">
             <div class="text-center mt-5 mb-4">
-              <h2>` + val.title + `</h2>
+              <a href="` + val.url + `" target="_blank">
+                <h2>` +
+                val.title +
+                `</h2>
+              </a>
             </div>
             <div class="single-chart">
               <svg viewBox="0 0 36 36" class="circular-chart green">
                 <path class="circle-bg" d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="circle" stroke-dasharray="` + val.value + `, 100" d="M18 2.0845
+                <path class="circle" stroke-dasharray="` +
+              val.value +
+              `, 100" d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <text x="18" y="20.35" class="percentage">` + val.value + `%</text>
+                <text x="18" y="20.35" class="percentage">` +
+              val.value +
+              `%</text>
               </svg>
             </div>
             </div>`;
-        } else {
-          html += `<div class="col-md-3">
+          } else {
+            html +=
+              `<div class="col-md-3">
             <div class="text-center mt-5 mb-4">
-              <h2>` + val.title + `</h2>
+              <a href="` + val.url + `" target="_blank">
+                <h2>` +
+                val.title +
+                `</h2>
+              </a>
             </div>
             <div class="single-chart">
               <svg viewBox="0 0 36 36" class="circular-chart blue">
                 <path class="circle-bg" d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="circle" stroke-dasharray="` + val.value + `, 100" d="M18 2.0845
+                <path class="circle" stroke-dasharray="` +
+              val.value +
+              `, 100" d="M18 2.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <text x="18" y="20.35" class="percentage">` + val.value + `%</text>
+                <text x="18" y="20.35" class="percentage">` +
+              val.value +
+              `%</text>
               </svg>
             </div>
             </div>`;
-        }
-
+          }
+        });
+        // el.append('654654');
+        el.innerHTML = el.innerHTML + html;
       });
-      // el.append('654654');
-      el.innerHTML = el.innerHTML + html;
-
-    });
-  </script>
-
-
-</body>
-
+    </script>
+  </body>
 </html>
